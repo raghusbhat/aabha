@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>AABHA, UI Components Library</title>
+    <style>
+      :root {
+        --primary-color: #845ec2;
+        --secondary-color: #ff6f91;
+        --warning-color: #e19c2e;
+        --danger-color: #e12e48;
+      }
+    </style>
+    <!-- Prevent flash of wrong theme -->
+    <script>
+      (function () {
+        // Check if user has saved preference
+        const darkMode = localStorage.getItem("darkMode");
+
+        // Default to dark mode
+        if (darkMode === null) {
+          // Set dark mode as default
+          localStorage.setItem("darkMode", "true");
+          document.documentElement.classList.add("dark");
+        } else if (darkMode === "true") {
+          // Ensure dark mode is applied
+          document.documentElement.classList.add("dark");
+        } else {
+          // Only remove dark class if explicitly set to false
+          document.documentElement.classList.remove("dark");
+        }
+
+        // Log the initial theme state for debugging
+        console.log(
+          "Initial theme state:",
+          document.documentElement.classList.contains("dark") ? "dark" : "light"
+        );
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
